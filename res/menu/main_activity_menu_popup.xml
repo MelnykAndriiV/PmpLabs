@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nextActivity"
+        android:title="Next activity"
+        android:onClick="onMenuNextActivityClicked"
+        />
+    <item
+        android:id="@+id/toast"
+        android:title="Промовити Toast"
+        />
+    <item
+        android:id="@+id/Name"
+        android:title="Name"
+        >
+
+        <menu>
+            <item
+                android:id="@+id/firstName"
+                android:title="First name"
+                android:onClick="onMenuFirstNameClicked"/>
+            <item
+                android:id="@+id/secondName"
+                android:title="Second name"
+                android:onClick="onMenuSecondNameClicked"/>
+        </menu>
+    </item>
+</menu>
