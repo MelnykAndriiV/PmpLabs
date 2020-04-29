@@ -4,17 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener((v)-> {
-                createMenu(v);
+                openActivity2();
             });
     }
 
@@ -34,26 +28,6 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_activity_menu, menu);
         return true;
-    }
-
-    public void createMenu(View v) {
-        PopupMenu pm = new PopupMenu(this,v);
-        pm.inflate(R.menu.main_activity_menu_popup);
-        pm.setOnMenuItemClickListener(i->{
-            switch (i.getItemId()){
-                case R.id.nextActivity:
-                    openActivity2();
-                case R.id.firstName:
-                    onMenuFirstNameClicked(i);
-                case R.id.secondName:
-                    onMenuSecondNameClicked(i);
-                case R.id.toast:
-                    getToast().show();
-                    getToastImg().show();
-            }
-            return true;
-        });
-        pm.show();
     }
 
     public void onMenuNextActivityClicked(MenuItem menuItem){
@@ -81,21 +55,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("name", name);
         intent.putExtra("surname", surname);
         startActivity(intent);
-    }
-
-    public Toast getToast(){
-        Toast toast = Toast.makeText(getApplicationContext(),"Звучить як toast",
-                Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.TOP,0,0);
-        return toast;
-    }
-
-    public Toast getToastImg(){
-        ImageView img = new ImageView(getApplicationContext());
-        img.setImageResource(R.drawable.toast);
-        Toast toast = Toast.makeText(getApplicationContext(),"",
-                Toast.LENGTH_LONG);
-        toast.setView(img);
-        return toast;
     }
 }
